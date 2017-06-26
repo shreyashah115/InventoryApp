@@ -5,6 +5,7 @@ app.controller('HomeCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("hello");
     var x = 0;
     $scope.total = 0; // Sum of things in cart
+    $scope.option = "All"; // The  default option for dropdown list
     
     // Show/Hide Search bar
     $scope.searchBar = function(){
