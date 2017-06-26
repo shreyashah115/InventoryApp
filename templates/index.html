@@ -56,6 +56,12 @@ button {
                 <div class="panel-heading"> 
                     <b> {{ "{{ title }}" }} </b>
                     <div style="float: right;"> 
+                        <select ng-model="option"> <!-- Added selecting option for category -->
+                    		<option value="All" selected> All </option>
+                    		<option value="Mobile"> Mobile </option>
+                    		<option value="Laptop"> Laptop </option>
+                    		<option value="Accessories"> Accessories </option>
+                    	</select>
                         <button type="submit" class="btn btn-primary" style="font-size: 0.72em;" ng-click="searchBar()"> Search </button>
                         <button type="submit" class="btn btn-primary" style="font-size: 0.72em;" ng-click="tableMain()"> Home </button>
                         <button type="submit" class="btn btn-primary" style="font-size: 0.72em;" ng-click="tableCart()"> Cart </button>
@@ -84,7 +90,7 @@ button {
                     <tbody>
 
                         <!-- If the quantity of an item goes to zero, its removed from table since it became out of stock -->
-                        <tr ng-repeat="i in items track by $index" ng-if="i.itemquantity > 0">
+                        <tr ng-repeat="i in items track by $index" ng-if="(i.itemquantity > 0 && i.itemcategory == option) || (i.itemquantity > 0 && option == 'All')"> <!-- Added if condition to display only selected category -->
 
                             <th scope="row">{{ '{{$index+1}}' }}</th>
                             <td>{{ '{{i.itemname}}' }}</td>
